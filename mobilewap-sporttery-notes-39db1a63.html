@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 信息页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fdf3e3 0%, #fae3c8 40%, #f7d4a6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+        }
+        .card {
+            max-width: 960px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 48px 24px 48px 24px;
+            box-shadow: 0 20px 40px -12px rgba(180, 110, 30, 0.22),
+                        0 8px 18px rgba(0, 0, 0, 0.03);
+            padding: 2.8rem 2.6rem;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 245, 230, 0.6);
+        }
+        @media (max-width: 640px) {
+            .card {
+                padding: 2rem 1.5rem;
+                border-radius: 32px 16px 32px 16px;
+            }
+        }
+        .hero-tag {
+            display: inline-block;
+            background: #e97b2a;
+            color: #fef7ed;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 1.2rem;
+            border: 1px solid #f5b077;
+            box-shadow: inset 0 1px 0 rgba(255,255,240,0.35);
+        }
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: #3a281a;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.6rem;
+        }
+        h1 small {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #8f6c4b;
+            margin-top: 0.5rem;
+            letter-spacing: 0;
+            border-left: 3px solid #e28d4e;
+            padding-left: 0.8rem;
+        }
+        .lead {
+            font-size: 1.2rem;
+            color: #5b3f2b;
+            line-height: 1.6;
+            margin-bottom: 2.2rem;
+            background: #fcf4e9;
+            padding: 1.2rem 1.6rem;
+            border-radius: 28px 12px 28px 12px;
+            border-left: 6px solid #d98a4b;
+            font-weight: 400;
+        }
+        .desc-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 2.6rem;
+        }
+        .desc-block {
+            background: #fefcf8;
+            border-radius: 32px 12px 32px 12px;
+            padding: 1.4rem 1.8rem;
+            box-shadow: 0 2px 8px rgba(140, 85, 40, 0.06);
+            border: 1px solid #f0ded0;
+        }
+        .desc-block p {
+            color: #3a2c20;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem 1.4rem;
+            background: #fcf7ef;
+            padding: 1.6rem 1.8rem;
+            border-radius: 28px 8px 28px 8px;
+            margin: 1.2rem 0 2.4rem 0;
+            border: 1px solid #eddccb;
+        }
+        @media (max-width: 540px) {
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        .feature-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            font-size: 0.95rem;
+            color: #3d2e1f;
+            line-height: 1.5;
+        }
+        .feature-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #ce7a3e;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .link-sentence {
+            background: #fef4e8;
+            padding: 1.2rem 1.6rem;
+            border-radius: 60px 16px 60px 16px;
+            font-size: 1.05rem;
+            color: #3c2c1b;
+            border: 1px solid #eacdb6;
+            margin: 2rem 0 1.8rem 0;
+            line-height: 1.7;
+            text-align: center;
+        }
+        .link-sentence a {
+            color: #c4671e;
+            font-weight: 600;
+            text-decoration: none;
+            background: rgba(228, 145, 68, 0.08);
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            display: inline-block;
+            word-break: keep-all;
+        }
+        .link-sentence a:hover {
+            background: #d87f38;
+            color: #fff;
+            border-color: #b55d1c;
+            box-shadow: 0 4px 12px rgba(200, 100, 30, 0.25);
+            transform: translateY(-1px);
+        }
+        .closing {
+            border-top: 2px dashed #e2cbb8;
+            padding-top: 1.6rem;
+            margin-top: 0.4rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .closing p {
+            font-size: 0.95rem;
+            color: #735f4b;
+            max-width: 70%;
+        }
+        .faq-mini {
+            font-size: 0.9rem;
+            color: #8b6d52;
+            background: #f7ede1;
+            padding: 0.8rem 1.4rem;
+            border-radius: 60px;
+            border: 1px solid #e4cfba;
+            display: inline-block;
+        }
+        .faq-mini span {
+            font-weight: 500;
+            color: #4f3522;
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .lead { font-size: 1.05rem; }
+            .closing { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+            .closing p { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="hero-tag">信息 · 可信与简洁</div>
+
+    <h1>
+        竞彩指南
+        <small>从站点介绍到日常使用</small>
+    </h1>
+
+    <div class="lead">
+        一个面向体育赛事与竞猜信息的聚合站点。不渲染情绪，只呈现内容框架与基础说明。
+    </div>
+
+    <div class="desc-grid">
+        <div class="desc-block">
+            <p>
+                <strong>站点定位</strong> —— 专注于提供竞彩相关资讯、赛事数据、赛程预览及基础规则说明的平台。页面结构清晰，适合希望快速了解赛程与规则框架的用户。无夸张宣传，无诱导话术，内容保持客观克制。
+            </p>
+        </div>
+        <div class="desc-block">
+            <p>
+                <strong>可信说明</strong> —— 网站内容基于公开赛事信息与通用竞彩规则整理，不涉及任何形式的投注建议或预测保证。所有数据仅供参考，用户应结合自身判断与官方渠道核实。理性参与，量力而行。
+            </p>
+        </div>
+    </div>
+
+    <ul class="feature-list">
+        <li>覆盖足球、篮球等主流联赛赛程</li>
+        <li>实时比分与历史交锋数据集成</li>
+        <li>玩法说明与奖金计算示例</li>
+        <li>赛前分析摘要（不含倾向性建议）</li>
+        <li>移动端优先的响应式布局</li>
+        <li>信息层级明确，减少认知负荷</li>
+    </ul>
+
+    <div class="link-sentence">
+        若想进一步了解赛事框架与数据展示方式，可直接前往 
+        <a href="https://mobilewap-sporttery.com">竞彩网</a> 
+        浏览完整页面。信息均以站点实际内容为准。
+    </div>
+
+    <div class="closing">
+        <p>温和提示：竞猜有风险，决策需自主。关注信息本身，保持良好心态。</p>
+        <div class="faq-mini">
+            <span>FAQ 摘要</span> · 数据来源 · 规则说明
+        </div>
+    </div>
+</div>
+</body>
+</html>
