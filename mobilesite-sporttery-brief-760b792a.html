@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息卡片 · 竞彩网导览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f0f2f5;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem 2rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e6e9ed;
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #0b1a2a;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #3f4a5a;
+            max-width: 720px;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: #eef2f7;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #2c3e50;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e6ec;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+            transform: translateY(-1px);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #152a3e;
+            letter-spacing: -0.02em;
+        }
+
+        .card p,
+        .card li {
+            font-size: 0.95rem;
+            color: #33485d;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.4rem;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #7e8b9f;
+            font-weight: bold;
+        }
+
+        .inline-link {
+            color: #1a5f8a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #bcc9d9;
+            font-weight: 450;
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #0b3a5e;
+            text-decoration-color: #0b3a5e;
+        }
+
+        /* 单列宽卡 */
+        .wide-card {
+            grid-column: 1 / -1;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1d2e44;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #40556a;
+        }
+
+        .note {
+            background: #f6f8fb;
+            border-radius: 16px;
+            padding: 1.2rem 1.6rem;
+            margin-top: 2rem;
+            border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+            color: #2b4055;
+        }
+
+        .note a {
+            color: #1a5f8a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .note a:hover {
+            color: #0b3a5e;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #6b7c8f;
+            font-size: 0.8rem;
+            margin-top: 3rem;
+            border-top: 1px solid #dce2ea;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1.8rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <section class="hero">
+        <h1>了解竞彩网 · 从一张卡片开始</h1>
+        <p>当你第一次打开一个网站，最直接的问题往往是：这个网站是做什么的？谁适合用？怎么用？这里用几张卡片梳理核心信息，帮助你快速建立判断。</p>
+        <span class="tagline">信息卡片 · 轻量导览</span>
+    </section>
+
+    <div class="card-grid">
+        <!-- 用途卡片 -->
+        <div class="card">
+            <h2>主要用途</h2>
+            <p>这是一个围绕体育赛事竞猜的资讯与服务平台。你可以在上面浏览各类赛前分析、实时数据以及赔率参考，并基于比赛结果进行竞猜互动。其内容覆盖足球、篮球、网球等多种主流运动。</p>
+        </div>
+
+        <!-- 适合人群 -->
+        <div class="card">
+            <h2>适合人群</h2>
+            <ul>
+                <li>对体育赛事有基本兴趣，希望获得赛前资讯的爱好者</li>
+                <li>已经参与竞猜，需要快速查看赛程与赔率变化的用户</li>
+                <li>想集中浏览多个联赛数据和趋势的轻度研究者</li>
+            </ul>
+        </div>
+
+        <!-- 场景卡片 -->
+        <div class="card wide-card">
+            <h2>常见使用场景</h2>
+            <p>周末赛事密集的下午，打开手机快速扫一眼赔率波动和伤病更新；或者晚间比赛前，花几分钟读一读焦点战的数据解读。它更像一个随身的信息面板，而不是长篇分析报告。也有人把它当作赛前核对信息的最后一站。</p>
+        </div>
+
+        <!-- FAQ 摘要卡片 -->
+        <div class="card wide-card">
+            <h2>几个常见疑问</h2>
+            <div class="faq-item">
+                <strong>需要注册才能浏览吗？</strong>
+                <p>大部分赛事信息和赔率数据可以直接查看，但参与竞猜或使用个性化功能通常需要注册账户。</p>
+            </div>
+            <div class="faq-item">
+                <strong>数据更新快吗？</strong>
+                <p>在热门赛事期间，赔率和比赛状态会保持较高频率更新，基本能满足实时参考需求。</p>
+            </div>
+            <div class="faq-item">
+                <strong>移动端体验如何？</strong>
+                <p>页面针对手机屏幕做了适配，核心操作如赛程筛选、赔率对比在竖屏下比较顺手。</p>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 -->
+        <div class="card wide-card" style="background: #f9fafc;">
+            <p style="font-size: 0.98rem; margin-bottom: 0.3rem;">
+                如果你想直接了解目前的赛事列表与实时数据，可以访问
+                <a href="https://mobilesite-sporttery.com" class="inline-link">竞彩网</a>
+                看看当日的重点场次。页面信息量适中，适合碎片时间快速浏览。
+            </p>
+            <p style="font-size: 0.9rem; color: #4a6078; margin-top: 0.8rem;">
+                建议先从自己熟悉的联赛或队伍开始，这样更容易理解各项数据的参考意义。
+            </p>
+        </div>
+    </div>
+
+    <!-- 简短提示区块 -->
+    <div class="note">
+        <strong style="display: block; margin-bottom: 0.25rem; font-weight: 600;">一点提示</strong>
+        网站上的赔率和数据会动态变化，实际数值以页面显示为准。竞猜前不妨多对比几家来源，理性参与。
+    </div>
+
+    <div class="footer-note">
+        信息卡片 · 仅作介绍用途 · 具体规则以网站内说明为准
+    </div>
+</div>
+</body>
+</html>
